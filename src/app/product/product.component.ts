@@ -3,11 +3,13 @@ import { RestApiService } from 'src/data/api-adapter/restApi.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'app-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class ProductComponent implements OnInit {
+  products: any[] = [];
+
   constructor(private apiService: RestApiService) {}
 
   ngOnInit(): void {
@@ -17,7 +19,7 @@ export class AppComponent implements OnInit {
   async getListProduct() {
     return this.apiService
       .getRequest(`${environment.apiUrl}/products`, {})
-      .subscribe((response) => console.log({ response }));
+      .subscribe((response) => (this.products = response));
   }
 
   logger(event: any) {

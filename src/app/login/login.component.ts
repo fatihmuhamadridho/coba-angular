@@ -3,11 +3,11 @@ import { RestApiService } from 'src/data/api-adapter/restApi.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class LoginComponent implements OnInit {
   constructor(private apiService: RestApiService) {}
 
   ngOnInit(): void {

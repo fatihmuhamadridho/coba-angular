@@ -1,0 +1,18 @@
+<div class="p-10 flex flex-col gap-10">
+  <div
+    class="p-3 min-h-10 flex flex-col gap-1 border-2 rounded-lg"
+    *ngFor="let product of products"
+  >
+    <div>id : {{ product.id }}</div>
+    <div>title : {{ product.title }}</div>
+    <div>price : {{ product.price }}</div>
+    <div>description: {{ product.description }}</div>
+    <div>category: {{ product.category }}</div>
+    <img
+      class="mt-4 self-center"
+      src="{{ product.image }}"
+      alt=""
+      width="100px"
+    />
+  </div>
+</div>
