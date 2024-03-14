@@ -8,6 +8,12 @@ import { ProductComponent } from './product/product.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DetailProductComponent } from './product/pages/detail-product/detail-product.component';
+import { CoreModule } from 'src/data/core.module';
+import { TambahProductComponent } from './product/pages/tambah-product/tambah-product.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -16,8 +22,18 @@ import { DetailProductComponent } from './product/pages/detail-product/detail-pr
     LoginComponent,
     RegisterComponent,
     DetailProductComponent,
+    TambahProductComponent,
   ],
-  imports: [HttpClientModule, BrowserModule, AppRoutingModule],
+  imports: [
+    HttpClientModule,
+    BrowserModule,
+    AppRoutingModule,
+    CoreModule.forRoot(),
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatInputModule,
+    MatFormFieldModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

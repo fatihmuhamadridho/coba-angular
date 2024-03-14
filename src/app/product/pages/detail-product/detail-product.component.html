@@ -1,1 +1,15 @@
-<p>detail-product works!</p>
+<div class="p-10 flex flex-col gap-10">
+  <div class="p-3 min-h-10 flex flex-col gap-1 border-2 rounded-lg">
+    <div>id : {{ detailProduct?.id }}</div>
+    <div>title : {{ detailProduct?.title }}</div>
+    <div>price : {{ detailProduct?.price }}</div>
+    <div>description: {{ detailProduct?.description }}</div>
+    <div>category: {{ detailProduct?.category }}</div>
+    <img
+      class="mt-4 self-center"
+      src="{{ detailProduct?.image }}"
+      alt=""
+      width="100px"
+    />
+  </div>
+</div>

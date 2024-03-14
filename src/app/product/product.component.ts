@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { HttpProductListResp } from '@core/domain/product.entity';
+import { ProductUsecase } from '@core/usecase/product/product.usecase';
 import { RestApiService } from 'src/data/api-adapter/restApi.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product',
@@ -8,18 +10,26 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
-  products: any[] = [];
+  products: HttpProductListResp[] = [];
 
-  constructor(private apiService: RestApiService) {}
+  constructor(
+    private apiService: RestApiService,
+    private titleService: Title,
+    public productUsecase: ProductUsecase
+  ) {}
 
   ngOnInit(): void {
     this.getListProduct();
+    this.titleService.setTitle('Product');
   }
 
   async getListProduct() {
-    return this.apiService
-      .getRequest(`${environment.apiUrl}/products`, {})
-      .subscribe((response) => (this.products = response));
+    await new Promise<void>((resolve) => {
+      this.productUsecase.execute().subscribe((res) => {
+        this.products = res;
+        resolve();
+      });
+    });
   }
 
   logger(event: any) {
